@@ -19,6 +19,7 @@ public class GetOrderListTest {
                 .when()
                 .get(URL.getURL())
                 .then()
+                .log().all()
                 .body("orders", instanceOf(List.class));
     }
 }

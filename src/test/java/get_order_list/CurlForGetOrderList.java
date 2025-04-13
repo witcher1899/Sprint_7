@@ -13,5 +13,5 @@ import lombok.Setter;
 @Setter
 public class CurlForGetOrderList {
 
-    private String URL = "https://qa-scooter.praktikum-services.ru/v1/orders?courierId=1";
+    private String URL = "https://qa-scooter.praktikum-services.ru/api/v1/orders";
 }

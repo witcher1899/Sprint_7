@@ -15,17 +15,22 @@ public class CourierCreateTest {
             "Проверка, что код ответа возвращает 201")
     @Test
     public void statusCode200ByCreatingCourier() {
-        CurlForCourierCreate URL = new CurlForCourierCreate();
-        RequestCourierCreate request = new RequestCourierCreate("witcher1899", "12345", "igor");
+        CurlForCourierCreate curlForCourierCreate = new CurlForCourierCreate();
+        RequestCourierCreate requestForCourierCreate = new RequestCourierCreate("witcher18991996", "12345", "igor");
 
         given()
-                .baseUri(URL.getURL())
+                .baseUri(curlForCourierCreate.getURL())
                 .contentType("application/json")
-                .body(request)
+                .body(requestForCourierCreate)
                 .when()
-                .post(URL.getEndpoint())
+                .post(curlForCourierCreate.getEndpoint())
                 .then()
+                .log().all()
                 .statusCode(201);
+
+        given()
+                .baseUri("https://qa-scooter.praktikum-services.ru")
+                .delete("/api/v1/courier/1996");
     }
 
 
@@ -43,6 +48,10 @@ public class CourierCreateTest {
                 .post(URL.getEndpoint())
                 .then()
                 .body("ok", equalTo(true));
+
+        given()
+                .baseUri("https://qa-scooter.praktikum-services.ru")
+                .delete("/api/v1/courier/1996");
     }
 
 
